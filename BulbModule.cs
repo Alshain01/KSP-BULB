@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using KSP.IO;
 
 namespace Bulb
 {
@@ -25,20 +23,29 @@ namespace Bulb
         {
             light = part.FindModelComponent<Light>();
             emissive = part.FindModelComponent<Renderer>();
+        }
+
+        public void Update()
+        {
+            if (HighLogic.LoadedSceneIsFlight)
+                setLightColor();
+            else if (HighLogic.LoadedSceneIsEditor)
+                recordLightColor();
+        }
+
+        public void recordLightColor()
+        {
             red = light.color.r;
             green = light.color.g;
             blue = light.color.b;
         }
 
-        public override void OnUpdate()
+        public void setLightColor()
         {
-            if (HighLogic.LoadedSceneIsFlight)
+            if (light.color.r != red || light.color.g != green || light.color.b != blue)
             {
-                if (light.color.r != red || light.color.g != green || light.color.b != blue) 
-                {
-                    light.color = new Color(red, green, blue, 1);
-                    emissive.material.SetColor("_EmissiveColor", light.color);
-                }
+                light.color = new Color(red, green, blue, 1);
+                emissive.material.SetColor("_EmissiveColor", light.color);
             }
         }
     }
