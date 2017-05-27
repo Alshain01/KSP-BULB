@@ -4,15 +4,15 @@ namespace Bulb
 {
     class BulbModule : PartModule
     {
-        [KSPField(guiActive = true, guiName = "Light R", isPersistant = true)]
+        [KSPField(guiActive = true, guiName = "#autoLOC_6001402", isPersistant = true)]
         [UI_FloatRange(maxValue = 1, minValue = 0, scene = UI_Scene.Flight, stepIncrement = 0.05f)]
         protected float red = 0;
 
-        [KSPField(guiActive = true, guiName = "Light G", isPersistant = true)]
+        [KSPField(guiActive = true, guiName = "#autoLOC_6001403", isPersistant = true)]
         [UI_FloatRange(maxValue = 1, minValue = 0, scene = UI_Scene.Flight, stepIncrement = 0.05f)]
         protected float green = 0;
 
-        [KSPField(guiActive = true, guiName = "Light B", isPersistant = true)]
+        [KSPField(guiActive = true, guiName = "#autoLOC_6001404", isPersistant = true)]
         [UI_FloatRange(maxValue = 1, minValue = 0, scene = UI_Scene.Flight, stepIncrement = 0.05f)]
         protected float blue = 0;
 
